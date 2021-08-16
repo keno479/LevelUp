@@ -1,0 +1,6 @@
+Enemy_ID,Enemy_Name,HP,Attack,Rank,Base_EXP
+1,Goblin,3,2,5,10
+2,Spider_Purple,6,4,10,20
+3,Spider_Red,9,6,10,30
+4,Spider_Green,12,8,10,40
+5,Rhinoceros,15,10,15,500
