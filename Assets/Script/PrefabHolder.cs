@@ -6,4 +6,5 @@ using anogamelib;
 public class PrefabHolder : Singleton<PrefabHolder>
 {
     public GameObject DamageView;
+    public GameObject ShowDrop;
 }

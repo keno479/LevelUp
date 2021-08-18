@@ -38,7 +38,7 @@ public class ScreenGacha : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             MasterWeaponParam GachaResult = UtilRand.GetParam(ref DataManager.Instance.masterweapon.list, "Gacha_Prob");
-            Debug.Log(GachaResult.Weapon_Name);
+            //Debug.Log(GachaResult.Weapon_Name);
             DataManager.Instance.dataWeapon.Add(GachaResult.Weapon_ID);
             EquipResult.sprite = SpriteManager.Instance.Get(GachaResult.Sprite_Name);
             EquipResult10[i].sprite = SpriteManager.Instance.Get(GachaResult.Sprite_Name);
@@ -58,7 +58,7 @@ public class ScreenGacha : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             MasterItemParam GachaResult = UtilRand.GetParam(ref DataManager.Instance.masteritem.list, "Gacha_Prob");
-            Debug.Log(GachaResult.Item_Name);
+            //Debug.Log(GachaResult.Item_Name);
             DataManager.Instance.dataItem.Add(GachaResult.Item_ID);
             ItemResult.sprite = SpriteManager.Instance.Get(GachaResult.Sprite_Name);
             ItemResult10[i].sprite = SpriteManager.Instance.Get(GachaResult.Sprite_Name);

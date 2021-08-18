@@ -201,7 +201,9 @@ public class UnitController: StateMachineBase<UnitController>
                 int attack = DataManager.Instance.UnitPlayer.GetTotalAttack();
                 if (enemy.Damage(attack))
                 {
-                    GameDirector.Instance.AddGold(10);
+                    GameDirector.Instance.DropItem(enemy.Enemy_ID);
+                    GameDirector.Instance.DropGold(enemy.Enemy_ID);
+                    //Debug.Log(param.Base_Gold);
                 };
                 GameObject damage = Instantiate(PrefabHolder.Instance.DamageView) as GameObject;
                 damage.transform.position = enemy.transform.position;

@@ -1,6 +1,6 @@
-Enemy_ID,Enemy_Name,HP,Attack,Rank,Base_EXP
-1,Goblin,3,2,5,10
-2,Spider_Purple,6,4,10,20
-3,Spider_Red,9,6,10,30
-4,Spider_Green,12,8,10,40
-5,Rhinoceros,15,10,15,500
+Enemy_ID,Enemy_Name,HP,Attack,Rank,Base_EXP,Base_Gold,Drop_Item_ID1,Drop_Item_ID2,Drop_Item_ID3
+1,Goblin,3,2,5,10,10,1,2,3
+2,Spider_Purple,6,4,10,20,15,4,5,6
+3,Spider_Red,9,6,10,30,20,7,8,9
+4,Spider_Green,12,8,10,40,25,10,11,12
+5,Rhinoceros,500,10,15,50,30,13,14,15
