@@ -21568,7 +21568,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.0000000043189274, y: 0.99256, z: -0.12175643, w: -0.000000035207954}
+  m_LocalRotation: {x: 0.000000004318928, y: 0.99256, z: -0.12175643, w: 0.000000035207957}
   m_LocalPosition: {x: 0, y: 7.65, z: 21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -30124,7 +30124,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325631368}
-  m_LocalRotation: {x: -0.0000000021594628, y: 0.99256, z: -0.12175641, w: -0.000000017603975}
+  m_LocalRotation: {x: 0.0000000021594633, y: 0.99256, z: -0.12175641, w: 0.000000017603979}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -50202,7 +50202,7 @@ MonoBehaviour:
   areaR: {fileID: 1907514730}
   areaL: {fileID: 1670529378}
   ImageShieldR: {fileID: 685436649}
-  ImageShieldL: {fileID: 685436649}
+  ImageShieldL: {fileID: 944039363}
   MainShieldImage: {fileID: 453731881}
   ButtonEquip: {fileID: 546737034}
   Shield_Name: {fileID: 674223900}

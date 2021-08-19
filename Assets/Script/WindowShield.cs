@@ -50,7 +50,7 @@ public class WindowShield : MonoBehaviour
             MainShieldImage.sprite = SpriteManager.Instance.Get(mastershield.Sprite_Name);
             Defense.text = $"防御力:{mastershield.Defense}";
             Shield_Name.text = $"{mastershield.Shield_Name}";
-            Debug.Log(mastershield.Sprite_Name);
+            //Debug.Log(mastershield.Sprite_Name);
         }
         else
         {
@@ -59,14 +59,15 @@ public class WindowShield : MonoBehaviour
             Shield_Name.text = "???";
             Debug.Log(datashield);
         }
-        ShowSideShield(areaR, ImageShieldR, Shield_ID + 1);
-        ShowSideShield(areaL, ImageShieldL, Shield_ID - 1);
+        ButtonEquip.interactable = datashield != null;
+        ShowSideShield(areaR, ImageShieldR, current_id + 1);
+        ShowSideShield(areaL, ImageShieldL, current_id - 1);
     }
 
     public void ShowSideShield(GameObject _area,Image _sideshield,int _shield_id)
     {
         MasterShieldParam mastershield = DataManager.Instance.mastershield.list.Find(p => p.Shield_ID == _shield_id);
-        DataShieldParam datashield = DataManager.Instance.datashield.list.Find(p => p.Shield_ID == mastershield.Shield_ID);
+        DataShieldParam datashield = DataManager.Instance.datashield.list.Find(p => p.Shield_ID == _shield_id);
         if (datashield != null)
         {
             _sideshield.sprite = SpriteManager.Instance.Get(mastershield.Sprite_Name);
