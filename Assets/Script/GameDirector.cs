@@ -112,12 +112,17 @@ public class GameDirector : Singleton<GameDirector>
     public void DropItem(int _enemy_id)
     {
         MasterEnemyParam masterenemy = DataManager.Instance.masterenemy.list.Find(p => p.Enemy_ID == _enemy_id);
-        MasterItemParam masteritem = DataManager.Instance.masteritem.list.Find(p => p.Item_ID == masterenemy.Drop_Item_ID1);
-        DataManager.Instance.dataItem.Add(masterenemy.Drop_Item_ID1);
-        GameObject drop = Instantiate(PrefabHolder.Instance.ShowDrop) as GameObject;
-        drop.transform.SetParent(areaDrop.transform);
-        drop.GetComponent<ShowDrop>().ImageDrop.sprite = SpriteManager.Instance.Get(masteritem.Sprite_Name);
-        drop.GetComponent<ShowDrop>().TextValue.text = "×1";
+        MasterItemParam masteritem = DataManager.Instance.masteritem.list.Find(p => p.Item_ID == UtilRand.GetRand(masterenemy.Drop_Item_ID3 + 1, masterenemy.Drop_Item_ID1));
+        if (masteritem != null)
+        {
+            DataManager.Instance.dataItem.Add(masteritem.Item_ID);
+            GameObject drop = Instantiate(PrefabHolder.Instance.ShowDrop) as GameObject;
+            drop.transform.SetParent(areaDrop.transform);
+            drop.GetComponent<ShowDrop>().ImageDrop.sprite = SpriteManager.Instance.Get(masteritem.Sprite_Name);
+            drop.GetComponent<ShowDrop>().TextValue.text = "×1";
+            DataManager.Instance.dataItem.list.Sort((a, b) => a.Item_ID - b.Item_ID);
+            DataManager.Instance.dataItem.Save();
+        }       
     }
 
     public void DropGold(int _enemy_id)
