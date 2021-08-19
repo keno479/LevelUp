@@ -20,4 +20,9 @@ public class ShowHome : MonoBehaviour
             WindowHome.SetActive(true);
         }
     }
+
+    public  void Exit()
+    {
+        WindowHome.SetActive(false);
+    }
 }

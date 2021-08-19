@@ -69,7 +69,7 @@ public class GameDirector : Singleton<GameDirector>
 
     public void ShowGold(int Gold)
     {
-        GoldText.text = $"金:{Gold}";
+        GoldText.text = $":{Gold}";
     }
 
     public void AddGold(int Add)
@@ -81,7 +81,7 @@ public class GameDirector : Singleton<GameDirector>
 
     public void ShowStone(int Stone)
     {
-        StoneText.text = $"石:{Stone}";
+        StoneText.text = $":{Stone}";
     }
 
     public void ShowLV()
