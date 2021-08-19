@@ -8,6 +8,7 @@ using anogamelib;
 public class WeaponWindow : MonoBehaviour
 {
     private int Weapon_ID;
+    //private List<MasterWeaponParam> WeaponList = new List<MasterWeaponParam>();
     public TextMeshProUGUI WeaponNameText;
     public Image MainWeaponImage;
     public GameObject AreaRight;
@@ -23,11 +24,15 @@ public class WeaponWindow : MonoBehaviour
     public TextMeshProUGUI GoldCost;
     public TextMeshProUGUI ItemCost;
     public TextMeshProUGUI LackText;
+    //private int a;
 
     private void OnEnable()
     {
         Weapon_ID = DataManager.Instance.GameInfo.GetInt(Define.KeyEquipWeaponID);
+        //WeaponList = DataManager.Instance.masterweapon.list;
         ShowWeapon(Weapon_ID);
+        //WeaponList[a] = WeaponList.Find(p => p.Weapon_ID == Weapon_ID);
+        //Debug.Log(WeaponList[a].Weapon_Name);
     }
 
     public void EpuipButton()

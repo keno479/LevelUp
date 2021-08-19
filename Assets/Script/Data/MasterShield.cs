@@ -11,6 +11,7 @@ public class MasterShieldParam : CsvDataParam
     public int Craft_Item_ID1;
     public int Craft_Item_ID2;
     public int Craft_Item_ID3;
+    public string Sprite_Name;
 }
 
 public class MasterShield : CsvData<MasterShieldParam>
