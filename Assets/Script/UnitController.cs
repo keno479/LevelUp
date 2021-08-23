@@ -6,7 +6,7 @@ using anogamelib;
 using UnityEngine.Events;
 using TMPro;
 
-public class UnitController: StateMachineBase<UnitController>
+public class UnitController : StateMachineBase<UnitController>
 {
     public InputAction InputMove;
     public Vector2 Movevalue;
@@ -74,6 +74,12 @@ public class UnitController: StateMachineBase<UnitController>
         Anim.SetBool("isBattle", isBattle);
     }
 
+    public void SetCanWalk(bool flag)
+    {
+        CanWalk = flag;
+        Debug.Log(flag);
+    }
+
     private void FixedUpdate()
     {
         if (CanWalk)
@@ -102,10 +108,15 @@ public class UnitController: StateMachineBase<UnitController>
 
     private class Idle : StateBase<UnitController>
     {
+        public override void OnEnterState()
+        {
+            base.OnEnterState();
+            machine.CanWalk = true;
+        }
+
         public override void OnUpdateState()
         {
             base.OnUpdateState();
-            machine.CanWalk = true;
             if (machine.isBattle)
             {
                 machine.SetState(new UnitController.Search(machine));
@@ -113,7 +124,6 @@ public class UnitController: StateMachineBase<UnitController>
             if (DataManager.Instance.UnitPlayer.HP <= 0)
             {
                 //machine.rb.isKinematic = true;
-                machine.CanWalk = false;
                 machine.SetState(new UnitController.DeadState(machine));
             }
         }
@@ -132,16 +142,15 @@ public class UnitController: StateMachineBase<UnitController>
         public override void OnUpdateState()
         {
             base.OnUpdateState();
-            
+
             if (!machine.isBattle)
             {
                 machine.SetState(new UnitController.Idle(machine));
             }
-            foreach(EnemyController enemy in EnemyManager.Instance.EnemyList)
+            foreach (EnemyController enemy in EnemyManager.Instance.EnemyList)
             {
                 if (enemy.IsFind() && enemy.isAlive())
                 {
-                    machine.CanWalk = false;
                     machine.SetState(new UnitController.Battle(machine, enemy));
                     break;
                 }
@@ -166,6 +175,7 @@ public class UnitController: StateMachineBase<UnitController>
             //machine.rb.isKinematic = true;
             //Debug.Log("battle");
             AttackSpan = 1.0f;
+            machine.CanWalk = false;
         }
 
         public override void OnUpdateState()
@@ -177,13 +187,13 @@ public class UnitController: StateMachineBase<UnitController>
             {
                 machine.SetState(new UnitController.Attack(machine, enemy));
             }
-            
+
             if (DataManager.Instance.UnitPlayer.HP <= 0)
             {
                 machine.SetState(new UnitController.DeadState(machine));
             }
         }
-        public Battle(UnitController machine, EnemyController enemy):base(machine)
+        public Battle(UnitController machine, EnemyController enemy) : base(machine)
         {
             this.machine = machine;
             this.enemy = enemy;
@@ -247,7 +257,9 @@ public class UnitController: StateMachineBase<UnitController>
         public override void OnEnterState()
         {
             base.OnEnterState();
-            machine.FreezeHandler.AddListener(() => {
+            machine.CanWalk = false;
+            machine.FreezeHandler.AddListener(() =>
+            {
                 machine.SetState(new UnitController.Freeze(machine));
             });
             machine.Anim.SetTrigger("DieTrigger");
@@ -276,5 +288,20 @@ public class UnitController: StateMachineBase<UnitController>
         public Freeze(UnitController _machine) : base(_machine)
         {
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Home")
+        {
+            UIAssistant.Instance.ShowPage("Home");
+            SetCanWalk(false);
+        }
+    }
+
+    public void ExitHome()
+    {
+        UIAssistant.Instance.ShowPage("idle");
+        SetCanWalk(true);
     }
 }

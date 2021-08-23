@@ -23,6 +23,7 @@ public class DataManager : Singleton<DataManager>
     public override void Initialize()
     {
         base.Initialize();
+        Application.targetFrameRate = 60;
         GameInfo.SetSaveFilename("GameInfo");
         if (GameInfo.Load() == false)
         {

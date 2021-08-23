@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using anogamelib;
 
 public class ShowHome : MonoBehaviour
 {
     public GameObject WindowHome;
+    private GameObject UnitObject;
     //public Scene Home;
 
     private void OnEnable()
@@ -17,12 +19,19 @@ public class ShowHome : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            WindowHome.SetActive(true);
+            UIAssistant.Instance.ShowPage("Home");
+            UnitObject = other.gameObject;
+            UnitObject.GetComponent<UnitController>().SetCanWalk(false);
         }
     }
 
-    public  void Exit()
+    public void Exit()
     {
-        WindowHome.SetActive(false);
+        UIAssistant.Instance.ShowPage("idle");
+        if (UnitObject != null) 
+        {
+            UnitObject.gameObject.GetComponent<UnitController>().SetCanWalk(true);
+            UnitObject = null;
+        } 
     }
 }
