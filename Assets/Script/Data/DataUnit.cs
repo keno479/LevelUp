@@ -35,8 +35,9 @@ public class DataUnitParam : CsvDataParam
     {
         int EquipShield_ID;
         MasterShieldParam mastershield;
+        EquipShield_ID = DataManager.Instance.GameInfo.GetInt(Define.KeyEquipShieldID);
         mastershield = DataManager.Instance.mastershield.list.Find
-            (p => p.Shield_ID == DataManager.Instance.GameInfo.GetInt(Define.KeyEquipShieldID));
+            (p => p.Shield_ID == EquipShield_ID);
         return Defense + mastershield.Defense + VIT;
     }
 }
