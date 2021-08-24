@@ -13,4 +13,9 @@ public class SceneMove : MonoBehaviour
             SceneManager.LoadScene(SceneName);
         }
     }
+
+    public void Move()
+    {
+        SceneManager.LoadScene(SceneName);
+    }
 }

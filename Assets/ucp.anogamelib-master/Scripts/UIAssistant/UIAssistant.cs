@@ -45,7 +45,7 @@ namespace anogamelib
                     Destroy(gameObject);
                 }
             }
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
 
             screenSize = new Vector2(Screen.width, Screen.height);
         }

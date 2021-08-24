@@ -679,8 +679,9 @@ GameObject:
   - component: {fileID: 519064398}
   - component: {fileID: 519064397}
   - component: {fileID: 519064399}
+  - component: {fileID: 519064400}
   m_Layer: 5
-  m_Name: ScreenWindow
+  m_Name: ScreenTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -760,17 +761,30 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 519064395}
-          m_MethodName: 
+        - m_Target: {fileID: 519064400}
+          m_MethodName: Move
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: aaaaa
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &519064400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519064395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 409ace07db3fbd54eb8bdf4abd3a1e89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneName: Home
 --- !u!1 &542688322
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,7 +866,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 542688325}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 842067215}
+        m_MethodName: ShowPage
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Ranking
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &542688325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1479,7 +1504,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 752374768}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 842067215}
+        m_MethodName: ShowParentPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &752374768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1865,9 +1901,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56211b55b06e44419fc26e5d3ad2b7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UImodules: []
-  panels: []
-  pages: []
+  UImodules:
+  - {fileID: 1933607122}
+  panels:
+  - {fileID: 1380959230}
+  - {fileID: 1699730121}
+  - {fileID: 1439777260}
+  - {fileID: 1923928338}
+  pages:
+  - name: idle
+    panels: []
+    ignoring_panels: []
+    soundtrack: '-'
+    default_page: 1
+    setTimeScale: 1
+    timeScale: 1
+    parent_page: 
+  - name: Announce
+    panels:
+    - {fileID: 1380959230}
+    - {fileID: 1699730121}
+    ignoring_panels: []
+    soundtrack: '-'
+    default_page: 0
+    setTimeScale: 1
+    timeScale: 1
+    parent_page: idle
+  - name: Ranking
+    panels:
+    - {fileID: 1380959230}
+    - {fileID: 1439777260}
+    ignoring_panels: []
+    soundtrack: '-'
+    default_page: 0
+    setTimeScale: 1
+    timeScale: 1
+    parent_page: idle
+  - name: Setting
+    panels:
+    - {fileID: 1380959230}
+    - {fileID: 1923928338}
+    ignoring_panels: []
+    soundtrack: '-'
+    default_page: 0
+    setTimeScale: 1
+    timeScale: 1
+    parent_page: idle
 --- !u!4 &842067216
 Transform:
   m_ObjectHideFlags: 0
@@ -2575,7 +2654,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1121304401}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 842067215}
+        m_MethodName: ShowPage
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Announce
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1121304401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2863,7 +2953,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1198802272}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 842067215}
+        m_MethodName: ShowPage
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Setting
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1198802272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3753,6 +3854,7 @@ GameObject:
   - component: {fileID: 1380959227}
   - component: {fileID: 1380959229}
   - component: {fileID: 1380959228}
+  - component: {fileID: 1380959230}
   m_Layer: 5
   m_Name: Filter
   m_TagString: Untagged
@@ -3816,6 +3918,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380959226}
   m_CullTransparentMesh: 0
+--- !u!114 &1380959230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380959226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8f86ae554fbcce468a203eee82eb8ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bFreez: 0
+  hide: 
+  show: 
 --- !u!1 &1433028653
 GameObject:
   m_ObjectHideFlags: 0
@@ -3903,6 +4020,7 @@ GameObject:
   - component: {fileID: 1439777257}
   - component: {fileID: 1439777259}
   - component: {fileID: 1439777258}
+  - component: {fileID: 1439777260}
   m_Layer: 5
   m_Name: WindowRanking
   m_TagString: Untagged
@@ -3968,6 +4086,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1439777256}
   m_CullTransparentMesh: 0
+--- !u!114 &1439777260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439777256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8f86ae554fbcce468a203eee82eb8ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bFreez: 0
+  hide: 
+  show: 
 --- !u!1 &1460988202
 GameObject:
   m_ObjectHideFlags: 0
@@ -4302,7 +4435,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1626115650}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 842067215}
+        m_MethodName: ShowParentPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1626115650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4351,6 +4495,7 @@ GameObject:
   - component: {fileID: 1699730118}
   - component: {fileID: 1699730120}
   - component: {fileID: 1699730119}
+  - component: {fileID: 1699730121}
   m_Layer: 5
   m_Name: WindowAnnounce
   m_TagString: Untagged
@@ -4416,6 +4561,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699730117}
   m_CullTransparentMesh: 0
+--- !u!114 &1699730121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699730117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8f86ae554fbcce468a203eee82eb8ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bFreez: 0
+  hide: 
+  show: 
 --- !u!1 &1708438372
 GameObject:
   m_ObjectHideFlags: 0
@@ -4843,7 +5003,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1813081348}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 842067215}
+        m_MethodName: ShowParentPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1813081348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5353,6 +5524,7 @@ GameObject:
   - component: {fileID: 1923928335}
   - component: {fileID: 1923928337}
   - component: {fileID: 1923928336}
+  - component: {fileID: 1923928338}
   m_Layer: 5
   m_Name: WindowSetting
   m_TagString: Untagged
@@ -5418,6 +5590,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923928334}
   m_CullTransparentMesh: 0
+--- !u!114 &1923928338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923928334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8f86ae554fbcce468a203eee82eb8ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bFreez: 0
+  hide: 
+  show: 
 --- !u!1 &1933607118
 GameObject:
   m_ObjectHideFlags: 0
