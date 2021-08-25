@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class Quest : MonoBehaviour
 {
-    private List<MasterQuestParam> QuestList = new List<MasterQuestParam>();
+    public TextMeshProUGUI TextOrder;
+    public TextMeshProUGUI TextReward;
+    public TextMeshProUGUI TextValue;
+    public TextMeshProUGUI BadgeClear;
 
     private void OnEnable()
     {
-        for(int i = 0; i < QuestList.Count; i++)
-        {
-
-        }
+        
     }
 }

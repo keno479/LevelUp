@@ -14,12 +14,10 @@ public class DataManager : Singleton<DataManager>
     public MasterShield mastershield = new MasterShield();
     public MasterItem masteritem = new MasterItem();
     public MasterEnemy masterenemy = new MasterEnemy();
-    public MasterQuest masterquest = new MasterQuest();
     public DataWeapon dataWeapon = new DataWeapon();
     public DataItem dataItem = new DataItem();
     public DataUnit dataunit = new DataUnit();
     public DataShild datashield = new DataShild();
-    public DataQuest dataquest = new DataQuest();
     public DataUnitParam UnitPlayer;
     public KVS GameInfo = new KVS();
 
@@ -83,13 +81,6 @@ public class DataManager : Singleton<DataManager>
         UnitPlayer = dataunit.list[0];
 
         masterenemy.Load(MasterEnemySource);
-
-        masterquest.Load(MasterMissionSource);
-        dataquest.SetSaveFilename("Data_Mission");
-        if (dataquest.Load() == false)
-        {
-            dataquest.Save();
-        }
 
         GameDirector.Instance.Init();
     }
