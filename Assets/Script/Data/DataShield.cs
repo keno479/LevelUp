@@ -11,9 +11,9 @@ public class DataShieldParam : CsvDataParam
 
 public class DataShild : CsvData<DataShieldParam>
 {
-	public void Add(int _iWeaponId)
+	public void Add(int _Shield_ID)
 	{
-		DataShieldParam param = list.Find(p => p.Shield_ID == _iWeaponId);
+		DataShieldParam param = list.Find(p => p.Shield_ID == _Shield_ID);
 		if (param != null)
 		{
 			param.Num += 1;
@@ -22,7 +22,7 @@ public class DataShild : CsvData<DataShieldParam>
 		{
 			param = new DataShieldParam()
 			{
-				Shield_ID = _iWeaponId,
+				Shield_ID = _Shield_ID,
 				Num = 1,
 			};
 			list.Add(param);
