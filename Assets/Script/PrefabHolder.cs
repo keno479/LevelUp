@@ -7,4 +7,6 @@ public class PrefabHolder : Singleton<PrefabHolder>
 {
     public GameObject DamageView;
     public GameObject ShowDrop;
+    public GameObject CraftShield;
+    public GameObject CraftItem;
 }
