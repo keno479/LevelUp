@@ -11,10 +11,12 @@ public class ShieldRecipe : MonoBehaviour
     public TextMeshProUGUI TextCostGold;
     public Image ShieldIcon;
     public Transform areaItemCost;
+    public GameObject Complete;
+    public Button BtnCraft;
 
     public void CraftRecipe(MasterShieldParam _param)
     {
-        MasterShieldParam shieldparam = DataManager.Instance.mastershield.list.Find
+        DataShieldParam datashield = DataManager.Instance.datashield.list.Find
             (p => p.Shield_ID == _param.Shield_ID);
         ShieldIcon.sprite = SpriteManager.Instance.Get(_param.Sprite_Name);
         Shield_Name.text = $"{_param.Shield_Name}";
@@ -36,6 +38,12 @@ public class ShieldRecipe : MonoBehaviour
                 CraftItem.transform.SetParent(areaItemCost);
                 CraftItem.GetComponent<CraftItemCost>().ShowItemCost(_param, Craft_Item_IDs[i], i);
             }
+        }
+
+        if (datashield.Num > 0)
+        {
+            Complete.SetActive(true);
+            BtnCraft.interactable = false;         
         }
     }
 }
