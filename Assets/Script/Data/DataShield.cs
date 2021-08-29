@@ -6,7 +6,7 @@ using anogamelib;
 public class DataShieldParam : CsvDataParam 
 {
     public int Shield_ID;
-	public int Num;
+	public bool Have;
 }
 
 public class DataShild : CsvData<DataShieldParam>
@@ -14,18 +14,25 @@ public class DataShild : CsvData<DataShieldParam>
 	public void Add(int _Shield_ID)
 	{
 		DataShieldParam param = list.Find(p => p.Shield_ID == _Shield_ID);
-		if (param != null)
+		if (!param.Have)
 		{
-			param.Num += 1;
+			param.Have = true;
 		}
-		else
+		Save();
+	}
+
+	public void CraftRecipe(int _Shield_ID)
+    {
+		DataShieldParam param = list.Find(p => p.Shield_ID == _Shield_ID);
+		if (param == null)
 		{
 			param = new DataShieldParam()
 			{
 				Shield_ID = _Shield_ID,
-				Num = 1,
+				Have = false,
 			};
 			list.Add(param);
 		}
+		Save();
 	}
 }

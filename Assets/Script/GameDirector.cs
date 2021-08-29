@@ -16,6 +16,7 @@ public class GameDirector : Singleton<GameDirector>
     public Image Badge_StatusUp;
     public Image areaDrop;
     public Image GoldIcon;
+    public bool[] CraftRecipe;
 
     public void Init()
     {
@@ -24,6 +25,11 @@ public class GameDirector : Singleton<GameDirector>
         ShowGold(DataManager.Instance.GameInfo.GetInt(Define.KeyGold));
         ShowStone(DataManager.Instance.GameInfo.GetInt(Define.KeyStone));
         ShowLV();
+        CraftRecipe = new bool[DataManager.Instance.datashield.list.Count];
+        for(int i = 0; i < DataManager.Instance.datashield.list.Count; i++)
+        {
+            CraftRecipe[i] = false;
+        }
     }
 
     public void Damage(int damage)
