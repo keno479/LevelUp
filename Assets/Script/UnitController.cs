@@ -77,7 +77,7 @@ public class UnitController : StateMachineBase<UnitController>
     public void SetCanWalk(bool flag)
     {
         CanWalk = flag;
-        Debug.Log(flag);
+        //Debug.Log(flag);
     }
 
     private void FixedUpdate()

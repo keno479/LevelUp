@@ -30,7 +30,7 @@ public class ShowHome : MonoBehaviour
         UIAssistant.Instance.ShowPage("idle");
         if (UnitObject != null) 
         {
-            UnitObject.gameObject.GetComponent<UnitController>().SetCanWalk(true);
+            UnitObject.GetComponent<UnitController>().SetCanWalk(true);
             UnitObject = null;
         } 
     }
