@@ -44,7 +44,7 @@ public class ShieldRecipe : MonoBehaviour
             GameObject CraftItem = Instantiate(PrefabHolder.Instance.CraftItem) as GameObject;
             CraftItem.transform.SetParent(areaItemCost);
             CraftItem.GetComponent<CraftItemCost>().
-                ShowItemCost(_param, Craft_Item_IDs[i], Craft_Item_Cost[i]);    
+                ShowItemCost(Craft_Item_IDs[i], Craft_Item_Cost[i]);    
         }
 
         Have(datashield.Have);
@@ -61,9 +61,51 @@ public class ShieldRecipe : MonoBehaviour
 
     public void Craft()
     {
-        DataShieldParam param =
+        bool itemcost_bool = false;
+        DataShieldParam dataparam =
             DataManager.Instance.datashield.list.Find(p => p.Shield_ID == Shield_ID);
-        DataManager.Instance.datashield.Add(Shield_ID);
-        Have(param.Have);
+        MasterShieldParam masterparam =
+            DataManager.Instance.mastershield.list.Find(p => p.Shield_ID == Shield_ID);
+       
+        int[] Craft_Item_IDs = new int[]
+        {
+            masterparam.Craft_Item_ID1,
+            masterparam.Craft_Item_ID2,
+            masterparam.Craft_Item_ID3,
+        };
+        int[] Craft_Item_Cost = new int[]
+        {
+            masterparam.Craft_Item1_Value,
+            masterparam.Craft_Item2_Value,
+            masterparam.Craft_Item3_Value,
+        };
+
+        for (int i = 0; i < Craft_Item_IDs.Length; i++)
+        {
+            DataItemParam dataitem = DataManager.Instance.dataItem.list.Find
+                (p => p.Item_ID == Craft_Item_IDs[i]);
+
+            if (dataitem.Num >= Craft_Item_Cost[i])
+            {
+                itemcost_bool = true;
+            }
+            else
+            {
+                itemcost_bool = false;
+            }
+
+            if (!itemcost_bool)
+            {
+                break;
+            }
+        }
+
+        if (DataManager.Instance.GameInfo.GetInt(Define.KeyGold) >
+            masterparam.Craft_Gold_Cost && itemcost_bool)
+        {
+            DataManager.Instance.datashield.Add(Shield_ID);
+            Have(dataparam.Have);
+        }
+        //Debug.Log(itemcost_bool);
     }
 }

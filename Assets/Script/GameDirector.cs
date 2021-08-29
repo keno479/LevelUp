@@ -25,8 +25,8 @@ public class GameDirector : Singleton<GameDirector>
         ShowGold(DataManager.Instance.GameInfo.GetInt(Define.KeyGold));
         ShowStone(DataManager.Instance.GameInfo.GetInt(Define.KeyStone));
         ShowLV();
-        CraftRecipe = new bool[DataManager.Instance.datashield.list.Count];
-        for(int i = 0; i < DataManager.Instance.datashield.list.Count; i++)
+        CraftRecipe = new bool[DataManager.Instance.mastershield.list.Count];
+        for(int i = 0; i < DataManager.Instance.mastershield.list.Count; i++)
         {
             CraftRecipe[i] = false;
         }

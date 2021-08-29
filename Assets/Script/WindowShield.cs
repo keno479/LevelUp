@@ -55,19 +55,20 @@ public class WindowShield : MonoBehaviour
         DataShieldParam datashield = 
             DataManager.Instance.datashield.list.Find(p => p.Shield_ID == mastershield.Shield_ID);
 
-        if (datashield != null)
-        {
-            MainShieldImage.sprite = SpriteManager.Instance.Get(mastershield.Sprite_Name);
-            Defense.text = $"防御力:{mastershield.Defense}";
-            Shield_Name.text = $"{mastershield.Shield_Name}";
-            //Debug.Log(mastershield.Sprite_Name);
-        }
-        else
+
+        if (datashield == null || !datashield.Have)
         {
             MainShieldImage.sprite = SpriteManager.Instance.Get("Bonus_50");
             Defense.text = "防御力:??";
             Shield_Name.text = "???";
             //Debug.Log(datashield);
+        }
+        else
+        {
+            MainShieldImage.sprite = SpriteManager.Instance.Get(mastershield.Sprite_Name);
+            Defense.text = $"防御力:{mastershield.Defense}";
+            Shield_Name.text = $"{mastershield.Shield_Name}";
+            //Debug.Log(mastershield.Sprite_Name);
         }
         ButtonEquip.interactable = datashield != null;
         PageNum.text = $"{ShieldIndex + 1}/{ShieldList.Count}";
@@ -83,13 +84,14 @@ public class WindowShield : MonoBehaviour
                 DataManager.Instance.mastershield.list.Find(p => p.Shield_ID == ShieldList[_shield_index].Shield_ID);
             DataShieldParam datashield =
                 DataManager.Instance.datashield.list.Find(p => p.Shield_ID == mastershield.Shield_ID);
-            if (datashield != null)
+            
+            if(datashield == null || !datashield.Have)
             {
-                _sideshield.sprite = SpriteManager.Instance.Get(mastershield.Sprite_Name);
+                _sideshield.sprite = SpriteManager.Instance.Get("Bonus_50");
             }
             else
             {
-                _sideshield.sprite = SpriteManager.Instance.Get("Bonus_50");
+                _sideshield.sprite = SpriteManager.Instance.Get(mastershield.Sprite_Name);
             }
             _area.SetActive(true);
         }
