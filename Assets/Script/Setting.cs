@@ -22,29 +22,20 @@ public class Setting : MonoBehaviour
         SetBGM_on_off();
     }
 
-    public void SetTextFPS()
+    public void SetTextFPS(int fps=-1)
     {
-        TextCurrentFPS.text = $"今の設定:{Application.targetFrameRate}FPS";
+        if (fps == -1)
+        {
+            fps = Application.targetFrameRate;
+        }
+        TextCurrentFPS.text = $"今の設定:{fps}FPS";
     }
 
-    public void SetFPSHigh()
+    public void SetFPSValue(int fps)
     {
-        Application.targetFrameRate = 60;
-        SetTextFPS();
+        TitleData.Instance.SetFPS(fps);
+        SetTextFPS(fps);
     }
-
-    public void SetFPSMiddle()
-    {
-        Application.targetFrameRate = 40;
-        SetTextFPS();
-    }
-
-    public void SetFPSLow()
-    {
-        Application.targetFrameRate = 20;
-        SetTextFPS();
-    }
-
     public void ChangeCameraMode()
     {
         CameraManual = !CameraManual;

@@ -41,10 +41,13 @@ public class ShieldRecipe : MonoBehaviour
 
         for (int i = 0; i < Craft_Item_IDs.Length; i++)
         {
-            GameObject CraftItem = Instantiate(PrefabHolder.Instance.CraftItem) as GameObject;
-            CraftItem.transform.SetParent(areaItemCost);
-            CraftItem.GetComponent<CraftItemCost>().
-                ShowItemCost(Craft_Item_IDs[i], Craft_Item_Cost[i]);    
+            if (Craft_Item_Cost[i] > 0)
+            {
+                GameObject CraftItem = Instantiate(PrefabHolder.Instance.CraftItem) as GameObject;
+                CraftItem.transform.SetParent(areaItemCost);
+                CraftItem.GetComponent<CraftItemCost>().
+                    ShowItemCost(Craft_Item_IDs[i], Craft_Item_Cost[i]);
+            }
         }
 
         Have(datashield.Have);
@@ -104,7 +107,17 @@ public class ShieldRecipe : MonoBehaviour
             masterparam.Craft_Gold_Cost && itemcost_bool)
         {
             DataManager.Instance.datashield.Add(Shield_ID);
+            DataManager.Instance.GameInfo.AddInt(Define.KeyGold, masterparam.Craft_Gold_Cost * -1);
+            for (int i = 0; i < Craft_Item_IDs.Length; i++)
+            {
+                DataItemParam dataitem = DataManager.Instance.dataItem.list.Find
+                    (p => p.Item_ID == Craft_Item_IDs[i]);
+
+                dataitem.Num -= Craft_Item_Cost[i];
+            }
             Have(dataparam.Have);
+            DataManager.Instance.GameInfo.Save();
+            DataManager.Instance.dataItem.Save();
         }
         //Debug.Log(itemcost_bool);
     }

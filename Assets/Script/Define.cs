@@ -11,4 +11,8 @@ public class Define
     public static readonly string KeyEquipWeaponID = "key_equipweaponID";
     public static readonly int DefaultWeaponID = 1;
     public static readonly string KeyEquipShieldID = "key_equipshieldID";
+    public static readonly string KeyFPS = "key_FPS";
+    public static readonly int DefaultFPS = 40;
+    public static readonly string KeyBGMOn = "key_BGM_on";
+    public static readonly string KeyCameraAuto = "key_camera_auto";
 }
