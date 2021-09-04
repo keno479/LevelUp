@@ -39,4 +39,17 @@ public class TitleData : Singleton<TitleData>
             Config.Save();
         }
     }
+    
+    public void SetBGM(bool bgm_bool)
+    {
+        if (bgm_bool)
+        {
+            Config.SetInt(Define.KeyBGMOn, 0);
+        }
+        else
+        {
+            Config.SetInt(Define.KeyBGMOn, 1);
+        }
+        Config.Save();
+    }
 }

@@ -14,7 +14,7 @@ public class Setting : MonoBehaviour
 
     private void OnEnable()
     {
-        Application.targetFrameRate = 60;
+        //Application.targetFrameRate = 60;
         CameraManual = true;
         BGM_on_off_bool = true;
         SetTextFPS();
@@ -22,7 +22,7 @@ public class Setting : MonoBehaviour
         SetBGM_on_off();
     }
 
-    public void SetTextFPS(int fps=-1)
+    public void SetTextFPS(int fps = -1)
     {
         if (fps == -1)
         {
