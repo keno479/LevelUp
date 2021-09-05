@@ -19,7 +19,7 @@ public class Setting : MonoBehaviour
         BGM_on_off_bool = true;
         SetTextFPS();
         SetCameraMode();
-        SetBGM_on_off();
+        SetTextBGM_on_off();
     }
 
     public void SetTextFPS(int fps = -1)
@@ -57,10 +57,12 @@ public class Setting : MonoBehaviour
     public void BGM_on_off()
     {
         BGM_on_off_bool = !BGM_on_off_bool;
-        SetBGM_on_off();
+        SetTextBGM_on_off();
+        TitleData.Instance.BGM_on_off(BGM_on_off_bool);
+        AudioManager.Instance.SetBGM();
     }
 
-    public void SetBGM_on_off()
+    public void SetTextBGM_on_off()
     {
         if (BGM_on_off_bool)
         {

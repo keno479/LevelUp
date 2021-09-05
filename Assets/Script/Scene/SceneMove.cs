@@ -17,5 +17,6 @@ public class SceneMove : MonoBehaviour
     public void Move()
     {
         SceneManager.LoadScene(SceneName);
+        AudioManager.Instance.SetBGM();
     }
 }

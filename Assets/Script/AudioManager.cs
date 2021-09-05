@@ -14,14 +14,29 @@ public class AudioManager : Singleton<AudioManager>
     {
         base.Initialize();
         audios = GetComponent<AudioSource>();
+        SetBGM();
+        DontDestroyOnLoad(gameObject);
     }
-    private void Update()
+
+    public void ChangeBGM()
     {
         if (SceneIndex != SceneManager.GetActiveScene().buildIndex)
         {
             SceneIndex = SceneManager.GetActiveScene().buildIndex;
             audios.clip = clips[SceneIndex];
+        }
+        SetBGM();
+    }
+
+    public void SetBGM()
+    {
+        if (TitleData.Instance.Config.GetInt(Define.KeyBGMOn) == 0)
+        {
             audios.Play();
+        }
+        else
+        {
+            audios.Stop();
         }
     }
 }

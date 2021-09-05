@@ -5,8 +5,8 @@ using anogamelib;
 
 public class TitleData : Singleton<TitleData>
 {
-    public KVS GameInfo;
-    public KVS Config;
+    public KVS GameInfo = new KVS();
+    public KVS Config = new KVS();
     public override void Initialize()
     {
         base.Initialize();
@@ -40,7 +40,7 @@ public class TitleData : Singleton<TitleData>
         }
     }
     
-    public void SetBGM(bool bgm_bool)
+    public void BGM_on_off(bool bgm_bool)
     {
         if (bgm_bool)
         {
