@@ -18,6 +18,8 @@ public class UnitController : StateMachineBase<UnitController>
     private UnityEvent AttackEndHandler = new UnityEvent();
     private UnityEvent FreezeHandler = new UnityEvent();
     public bool CanWalk;
+    public Transform CanvasDamage;
+    public Camera cam;
 
     void Start()
     {
@@ -212,12 +214,17 @@ public class UnitController : StateMachineBase<UnitController>
                 if (enemy.Damage(attack))
                 {
                     GameDirector.Instance.DropItem(enemy.Enemy_ID);
-                    GameDirector.Instance.DropGold(enemy.Enemy_ID);
+                    GameDirector.Instance.DropGold(enemy.usemasterparam);
+                    GameDirector.Instance.EscOn();
+                    machine.CanWalk = true;
+                    GameDirector.Instance.GetEXP(enemy.usemasterparam.Base_EXP);
+                    machine.SetState(new UnitController.Search(machine));
                     //Debug.Log(param.Base_Gold);
                 };
-                GameObject damage = Instantiate(PrefabHolder.Instance.DamageView) as GameObject;
-                damage.transform.position = enemy.transform.position;
-                damage.GetComponent<TextMeshPro>().text = $"{attack}";
+                GameObject damage = Instantiate(PrefabHolder.Instance.DamageText,machine.CanvasDamage) as GameObject;
+
+                damage.transform.position = machine.cam.WorldToScreenPoint(enemy.transform.position);
+                damage.GetComponent<TextMeshProUGUI>().text = $"{attack}";
             });
             machine.AttackEndHandler.AddListener(() =>
             {
@@ -232,11 +239,7 @@ public class UnitController : StateMachineBase<UnitController>
             base.OnUpdateState();
             if (!enemy.isAlive())
             {
-                MasterEnemyParam masterenemy = DataManager.Instance.masterenemy.list.Find(p => p.Enemy_ID == enemy.Enemy_ID);
-                GameDirector.Instance.EscOn();
-                machine.CanWalk = true;
-                GameDirector.Instance.GetEXP(masterenemy.Base_EXP);
-                machine.SetState(new UnitController.Search(machine));
+                
             }
         }
         public override void OnExitState()

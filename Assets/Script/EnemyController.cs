@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class EnemyController : StateMachineBase<EnemyController>
 {
     public int Enemy_ID;
+    public int Enemy_Level;
     private Transform TargetTransform;
     public float Distance;
     public Animator Anim;
@@ -17,6 +18,7 @@ public class EnemyController : StateMachineBase<EnemyController>
     public int Hp_max;
     Vector3 IdlePos;
     private int attack;
+    public MasterEnemyParam usemasterparam;
 
     private void Start()
     {
@@ -27,14 +29,16 @@ public class EnemyController : StateMachineBase<EnemyController>
         System.Type t = typeof(UnitController);
         TargetTransform = (FindObjectOfType(t) as UnitController).transform;
         SetState(new EnemyController.Idol(this));
-        MasterEnemyParam param = DataManager.Instance.masterenemy.list.Find(p => p.Enemy_ID == Enemy_ID);
+        MasterEnemyParam param = DataManager.Instance.masterenemy.list.
+            Find(p => p.Enemy_ID == Enemy_ID);
+        usemasterparam = param.Build(Enemy_Level);
         if (Anim == null)
         {
             Anim = GetComponent<Animator>();
         }
         if (Enemy_ID > 0)
         {
-            Hp_max = param.HP;
+            Hp_max = usemasterparam.HP;
         }
         else
         {
@@ -43,7 +47,7 @@ public class EnemyController : StateMachineBase<EnemyController>
         Hp = Hp_max;
         EnemyManager.Instance.Add(this);
         IdlePos = transform.position;
-        attack = param.Attack;
+        attack = usemasterparam.Attack;
     }
 
     public bool IsFind()

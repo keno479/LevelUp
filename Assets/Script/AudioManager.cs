@@ -14,11 +14,20 @@ public class AudioManager : Singleton<AudioManager>
     {
         base.Initialize();
         audios = GetComponent<AudioSource>();
-        SetBGM();
+        ChangeBGM();
         DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
     }
 
-    public void ChangeBGM()
+    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        if (arg1 == LoadSceneMode.Single)
+        {
+            ChangeBGM();
+        }
+    }
+
+    private void ChangeBGM()
     {
         if (SceneIndex != SceneManager.GetActiveScene().buildIndex)
         {

@@ -16,10 +16,10 @@ public class Setting : MonoBehaviour
     {
         //Application.targetFrameRate = 60;
         CameraManual = true;
-        BGM_on_off_bool = true;
+        BGM_on_off_bool = TitleData.Instance.Config.GetInt(Define.KeyBGMOn) == 0;
         SetTextFPS();
         SetCameraMode();
-        SetTextBGM_on_off();
+        SetTextBGM_on_off(BGM_on_off_bool);
     }
 
     public void SetTextFPS(int fps = -1)
@@ -57,14 +57,14 @@ public class Setting : MonoBehaviour
     public void BGM_on_off()
     {
         BGM_on_off_bool = !BGM_on_off_bool;
-        SetTextBGM_on_off();
+        SetTextBGM_on_off(BGM_on_off_bool);
         TitleData.Instance.BGM_on_off(BGM_on_off_bool);
         AudioManager.Instance.SetBGM();
     }
 
-    public void SetTextBGM_on_off()
+    public void SetTextBGM_on_off(bool _on)
     {
-        if (BGM_on_off_bool)
+        if (_on) 
         {
             TextBGM_on_off.text = $"BGMオン";
         }

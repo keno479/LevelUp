@@ -14,7 +14,34 @@ public class MasterEnemyParam : CsvDataParam
     public int Drop_Item_ID1;
     public int Drop_Item_ID2;
     public int Drop_Item_ID3;
+
+    public MasterEnemyParam Build(int level)
+    {
+        if (level <= 0)
+        {
+            Debug.LogError($"error:level={level}");
+            level = 1;
+        }
+        MasterEnemyParam ret = new MasterEnemyParam();
+        ret.Enemy_ID = Enemy_ID;
+        ret.Enemy_Name = Enemy_Name;
+        ret.Attack = GetStatus(Attack,level);
+        ret.HP = GetStatus(HP, level);
+        ret.Base_EXP = GetStatus(Base_EXP,level);
+        ret.Base_Gold = GetStatus(Base_Gold, level);
+        ret.Drop_Item_ID1 = Drop_Item_ID1;
+        ret.Drop_Item_ID2 = Drop_Item_ID2;
+        ret.Drop_Item_ID3 = Drop_Item_ID3;
+        return ret;
+    }
+
+    private int GetStatus(int status,int level)
+    {
+        int ret= status+ (int)((status * 0.1) * (level - 1));
+        return ret;
+    }
 }
+
 public class MasterEnemy : CsvData<MasterEnemyParam>
 {
     

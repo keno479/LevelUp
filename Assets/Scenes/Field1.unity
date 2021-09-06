@@ -139,7 +139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4444695180855720, guid: 9a1abb7e036c57e4d9564b8d6de6d323, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 6.09
       objectReference: {fileID: 0}
     - target: {fileID: 4444695180855720, guid: 9a1abb7e036c57e4d9564b8d6de6d323, type: 3}
       propertyPath: m_LocalPosition.y
@@ -147,7 +147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4444695180855720, guid: 9a1abb7e036c57e4d9564b8d6de6d323, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -18.55
       objectReference: {fileID: 0}
     - target: {fileID: 4444695180855720, guid: 9a1abb7e036c57e4d9564b8d6de6d323, type: 3}
       propertyPath: m_LocalRotation.w
@@ -386,6 +386,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Enemy_ID: 2
+  Enemy_Level: 0
   Distance: 0
   Anim: {fileID: 0}
   Hp_max: 0
@@ -582,6 +583,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Enemy_ID: 3
+  Enemy_Level: 0
   Distance: 0
   Anim: {fileID: 0}
   Hp_max: 0
@@ -690,6 +692,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Enemy_ID: 1
+  Enemy_Level: 10000
   Distance: 0
   Anim: {fileID: 0}
   Hp_max: 0
@@ -748,7 +751,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083285717}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12, y: 0, z: 31.13}
+  m_LocalPosition: {x: 3.8, y: 0, z: 8.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1525555125}
@@ -860,6 +863,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Enemy_ID: 5
+  Enemy_Level: 0
   Distance: 0
   Anim: {fileID: 1348420216}
   Hp_max: 0
@@ -946,7 +950,7 @@ PrefabInstance:
     - target: {fileID: 8272943599223628453, guid: 47b41978aba272c47ae5f4a2f7179c61,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.98
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8272943599223628453, guid: 47b41978aba272c47ae5f4a2f7179c61,
         type: 3}
@@ -956,7 +960,7 @@ PrefabInstance:
     - target: {fileID: 8272943599223628453, guid: 47b41978aba272c47ae5f4a2f7179c61,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.92
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8272943599223628453, guid: 47b41978aba272c47ae5f4a2f7179c61,
         type: 3}
@@ -1083,6 +1087,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Enemy_ID: 4
+  Enemy_Level: 0
   Distance: 0
   Anim: {fileID: 0}
   Hp_max: 0

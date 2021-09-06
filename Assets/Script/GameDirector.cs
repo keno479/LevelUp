@@ -148,10 +148,8 @@ public class GameDirector : Singleton<GameDirector>
         }       
     }
 
-    public void DropGold(int _enemy_id)
+    public void DropGold(MasterEnemyParam masterenemy)
     {
-        MasterEnemyParam masterenemy = 
-            DataManager.Instance.masterenemy.list.Find(p => p.Enemy_ID == _enemy_id);
         GameDirector.Instance.AddGold(masterenemy.Base_Gold);
         GameObject drop = Instantiate(PrefabHolder.Instance.ShowDrop) as GameObject;
         drop.transform.SetParent(areaDrop.transform);
