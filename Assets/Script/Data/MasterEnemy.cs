@@ -14,6 +14,8 @@ public class MasterEnemyParam : CsvDataParam
     public int Drop_Item_ID1;
     public int Drop_Item_ID2;
     public int Drop_Item_ID3;
+    public int LV_max;
+    public int LV_min;
 
     public MasterEnemyParam Build(int level)
     {
@@ -27,11 +29,13 @@ public class MasterEnemyParam : CsvDataParam
         ret.Enemy_Name = Enemy_Name;
         ret.Attack = GetStatus(Attack,level);
         ret.HP = GetStatus(HP, level);
-        ret.Base_EXP = GetStatus(Base_EXP,level);
+        ret.Base_EXP = GetStatus(Base_EXP, level);
         ret.Base_Gold = GetStatus(Base_Gold, level);
         ret.Drop_Item_ID1 = Drop_Item_ID1;
         ret.Drop_Item_ID2 = Drop_Item_ID2;
         ret.Drop_Item_ID3 = Drop_Item_ID3;
+        ret.LV_max = LV_max;
+        ret.LV_min = LV_min;
         return ret;
     }
 

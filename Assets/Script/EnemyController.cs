@@ -31,6 +31,7 @@ public class EnemyController : StateMachineBase<EnemyController>
         SetState(new EnemyController.Idol(this));
         MasterEnemyParam param = DataManager.Instance.masterenemy.list.
             Find(p => p.Enemy_ID == Enemy_ID);
+        Enemy_Level = Random.Range(param.LV_min, param.LV_max);
         usemasterparam = param.Build(Enemy_Level);
         if (Anim == null)
         {
@@ -216,11 +217,11 @@ public class EnemyController : StateMachineBase<EnemyController>
             if (RespawnTime >= 10 && RespawnTime < 11)
             {
                 machine.Anim.SetTrigger("RespawnTrigger");
-                machine.Hp = machine.Hp_max;
             }
             else if (RespawnTime >= 11)
             {
                 machine.gameObject.transform.position = machine.IdlePos;
+                machine.SetUp();
                 machine.SetState(new EnemyController.Idol(machine));
             }
         }
