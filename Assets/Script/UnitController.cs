@@ -213,6 +213,7 @@ public class UnitController : StateMachineBase<UnitController>
                 int attack = DataManager.Instance.UnitPlayer.GetTotalAttack();
                 if (enemy.Damage(attack))
                 {
+                    DataManager.Instance.dataenemy.AddKillCount(enemy.Enemy_ID);
                     GameDirector.Instance.DropItem(enemy.Enemy_ID);
                     GameDirector.Instance.DropGold(enemy.usemasterparam);
                     GameDirector.Instance.EscOn();

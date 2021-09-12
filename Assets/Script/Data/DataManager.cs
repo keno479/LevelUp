@@ -18,6 +18,7 @@ public class DataManager : Singleton<DataManager>
     public DataItem dataItem = new DataItem();
     public DataUnit dataunit = new DataUnit();
     public DataShild datashield = new DataShild();
+    public DataEnemy dataenemy = new DataEnemy();
     public DataUnitParam UnitPlayer;
     public KVS GameInfo = new KVS();
 
@@ -80,6 +81,11 @@ public class DataManager : Singleton<DataManager>
         UnitPlayer = dataunit.list[0];
 
         masterenemy.Load(MasterEnemySource);
+        dataenemy.SetSaveFilename("Data_Enemy");
+        if (dataenemy.Load() == false)
+        {
+            dataenemy.Save();
+        }
 
         GameDirector.Instance.Init();
     }
