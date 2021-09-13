@@ -9,4 +9,5 @@ public class PrefabHolder : Singleton<PrefabHolder>
     public GameObject ShowDrop;
     public GameObject CraftShield;
     public GameObject CraftItem;
+    public GameObject Quest;
 }

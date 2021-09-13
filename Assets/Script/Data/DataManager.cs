@@ -9,11 +9,12 @@ public class DataManager : Singleton<DataManager>
     public TextAsset MasterEnemySource;
     public TextAsset MasterShieldSource;
     public TextAsset MasterItemSource;
-    public TextAsset MasterMissionSource;
+    public TextAsset MasterQuestSource;
     public MasterWeapon masterweapon = new MasterWeapon();
     public MasterShield mastershield = new MasterShield();
     public MasterItem masteritem = new MasterItem();
     public MasterEnemy masterenemy = new MasterEnemy();
+    public MasterQuest masterquest = new MasterQuest();
     public DataWeapon dataWeapon = new DataWeapon();
     public DataItem dataItem = new DataItem();
     public DataUnit dataunit = new DataUnit();
@@ -86,6 +87,8 @@ public class DataManager : Singleton<DataManager>
         {
             dataenemy.Save();
         }
+
+        masterquest.Load(MasterQuestSource);
 
         GameDirector.Instance.Init();
     }
