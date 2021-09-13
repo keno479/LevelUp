@@ -223,9 +223,9 @@ public class UnitController : StateMachineBase<UnitController>
                     //Debug.Log(param.Base_Gold);
                 };
                 GameObject damage = Instantiate(PrefabHolder.Instance.DamageText,machine.CanvasDamage) as GameObject;
-
-                damage.transform.position = machine.cam.WorldToScreenPoint(enemy.transform.position);
-                damage.GetComponent<TextMeshProUGUI>().text = $"{attack}";
+                damage.GetComponent<DamageText>().Initialize(attack, machine.cam, enemy.transform.position);
+                //damage.transform.position = machine.cam.WorldToScreenPoint(enemy.transform.position);
+                //damage.GetComponent<TextMeshProUGUI>().text = $"{attack}";
             });
             machine.AttackEndHandler.AddListener(() =>
             {
