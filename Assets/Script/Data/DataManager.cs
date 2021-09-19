@@ -56,6 +56,16 @@ public class DataManager : Singleton<DataManager>
         datashield.SetSaveFilename("Data_Shield");
         if (datashield.Load() == false)
         {
+            foreach (MasterShieldParam q in mastershield.list)
+            {
+                DataShieldParam data = new DataShieldParam
+                {
+                    Shield_ID = q.Shield_ID,
+                    Have = false,
+                    Recipe_Have = false
+                };
+                datashield.list.Add(data);
+            }
             datashield.Save();
         }
 

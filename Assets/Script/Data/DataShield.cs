@@ -7,6 +7,7 @@ public class DataShieldParam : CsvDataParam
 {
     public int Shield_ID;
 	public bool Have;
+	public bool Recipe_Have;
 }
 
 public class DataShild : CsvData<DataShieldParam>
@@ -30,6 +31,7 @@ public class DataShild : CsvData<DataShieldParam>
 			{
 				Shield_ID = _Shield_ID,
 				Have = false,
+				Recipe_Have = false
 			};
 			list.Add(param);
 		}
