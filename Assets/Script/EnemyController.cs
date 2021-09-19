@@ -19,6 +19,7 @@ public class EnemyController : StateMachineBase<EnemyController>
     Vector3 IdlePos;
     private int attack;
     public MasterEnemyParam usemasterparam;
+    public AudioSource Audios;
 
     private void Start()
     {
@@ -49,6 +50,7 @@ public class EnemyController : StateMachineBase<EnemyController>
         EnemyManager.Instance.Add(this);
         IdlePos = transform.position;
         attack = usemasterparam.Attack;
+        Audios = GetComponent<AudioSource>();
     }
 
     public bool IsFind()
@@ -119,6 +121,7 @@ public class EnemyController : StateMachineBase<EnemyController>
         {
             base.OnEnterState();
             //Debug.Log("look");
+            machine.Audios.PlayOneShot(AudioManager.Instance.SE_Enemy[1]);
         }
         
         
@@ -147,11 +150,14 @@ public class EnemyController : StateMachineBase<EnemyController>
         public override void OnEnterState()
         {
             base.OnEnterState();
-            machine.AttackHitHandler.AddListener(() => {
+            machine.AttackHitHandler.AddListener(() =>
+            {
+                machine.Audios.PlayOneShot(AudioManager.Instance.SE_Enemy[0]);
                 GameDirector.Instance.Damage(machine.attack);
                 Debug.Log(machine.attack);
             });
-            machine.AttackEndHandler.AddListener(() => {
+            machine.AttackEndHandler.AddListener(() =>
+            {
                 machine.SetState(new EnemyController.LookTarget(machine));
             });
             machine.Anim.SetTrigger("AttackTrigger");

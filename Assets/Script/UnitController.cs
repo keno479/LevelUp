@@ -20,11 +20,13 @@ public class UnitController : StateMachineBase<UnitController>
     public bool CanWalk;
     public Transform CanvasDamage;
     public Camera cam;
+    public AudioSource audios;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         Anim = GetComponent<Animator>();
+        audios = GetComponent<AudioSource>();
         SetState(new UnitController.Idle(this));
     }
 
@@ -210,6 +212,7 @@ public class UnitController : StateMachineBase<UnitController>
             base.OnEnterState();
             machine.AttackHitHandler.AddListener(() =>
             {
+                machine.audios.PlayOneShot(AudioManager.Instance.SE_Unit[0]);
                 int attack = DataManager.Instance.UnitPlayer.GetTotalAttack();
                 if (enemy.Damage(attack))
                 {

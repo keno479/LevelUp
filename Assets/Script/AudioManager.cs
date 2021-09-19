@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class AudioManager : Singleton<AudioManager>
 {
     public AudioClip[] clips;
+    public AudioClip[] SE_Unit;
+    public AudioClip[] SE_Enemy;
     private AudioSource audios;
     private int SceneIndex;
 

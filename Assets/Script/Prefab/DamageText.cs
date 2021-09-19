@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class DamageText : MonoBehaviour
 {
-    private float speed = 2400.0f;
+    //private float speed = 2400.0f;
     private Camera TargetCamera;
     private Vector3 TargetPosition;
     private Vector3 Move;
