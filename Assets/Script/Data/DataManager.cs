@@ -20,6 +20,7 @@ public class DataManager : Singleton<DataManager>
     public DataUnit dataunit = new DataUnit();
     public DataShild datashield = new DataShild();
     public DataEnemy dataenemy = new DataEnemy();
+    public DataQuest dataquest = new DataQuest();
     public DataUnitParam UnitPlayer;
     public KVS GameInfo = new KVS();
 
@@ -89,6 +90,21 @@ public class DataManager : Singleton<DataManager>
         }
 
         masterquest.Load(MasterQuestSource);
+        dataquest.SetSaveFilename("Data_Quest");
+        if (dataquest.Load() == false)
+        {
+            foreach(MasterQuestParam q in masterquest.list)
+            {
+                DataQuestParam data = new DataQuestParam
+                {
+                    Quest_ID = q.Quest_ID,
+                    Clear_bool = false
+                };
+                dataquest.list.Add(data);
+            }
+            dataquest.Save();
+        }
+
 
         GameDirector.Instance.Init();
     }
