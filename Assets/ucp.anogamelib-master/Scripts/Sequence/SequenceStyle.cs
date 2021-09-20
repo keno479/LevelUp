@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace anogamelib
 {
+#if UNITY_EDITOR
     public static class SequenceStyle
     {
         public static readonly GUIStyle SmallTickbox = new GUIStyle("ShurikenToggle");
@@ -60,6 +61,7 @@ namespace anogamelib
             EditorGUILayout.LabelField(title, EditorStyles.boldLabel);
         }
 
+#if UNITY_EDITOR
         static public Rect DrawHeader(ref bool expanded, ref bool activeField, string title, Color feedbackColor, System.Action<GenericMenu> fillGenericMenu,
             float startedAt, float duration, SequenceTiming timing, bool pause)
         {
@@ -233,9 +235,11 @@ namespace anogamelib
             }
             return backgroundRect;
         }
+#endif
 
 
     }
+#endif
 }
 
 

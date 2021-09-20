@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace anogamelib
 {
+#if UNITY_EDITOR
     [CustomEditor(typeof(Saveable), true)]
     public class SaveableInspector : Editor
     {
@@ -56,4 +57,5 @@ namespace anogamelib
             }
         }
     }
+#endif
 }

@@ -13,6 +13,7 @@ public class CraftShieldList : MonoBehaviour
     {
         Shieldlist = DataManager.Instance.mastershield.list;
         DataList = DataManager.Instance.datashield.list;
+        
 
         for (int i = 0; i < Shieldlist.Count; i++)
         {

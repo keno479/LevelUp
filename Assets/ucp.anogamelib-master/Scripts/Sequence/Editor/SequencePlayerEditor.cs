@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace anogamelib
 {
+#if UNITY_EDITOR
     [CustomEditor(typeof(SequencePlayer))]
     public class SequencePlayerEditor : Editor
     {
@@ -620,5 +621,5 @@ namespace anogamelib
             }
         }
 
-    
+#endif
 }

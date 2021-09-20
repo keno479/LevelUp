@@ -5,6 +5,7 @@ using System.Linq;
 
 namespace anogamelib
 {
+#if UNITY_EDITOR
     [CustomEditor(typeof(UIAssistant))]
     public class UIAssistantEditor : MetaEditor
     {
@@ -241,4 +242,5 @@ namespace anogamelib
             GUI.color = defColor;
         }
     }
+#endif
 }

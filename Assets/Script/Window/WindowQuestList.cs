@@ -11,11 +11,23 @@ public class WindowQuestList : MonoBehaviour
     private void OnEnable()
     {
         QuestList = DataManager.Instance.masterquest.list;
-        for(int i = 0; i < QuestList.Count; i++)
+
+        Delete();
+        for (int i = 0; i < QuestList.Count; i++)
         {
             GameObject Quest = Instantiate(PrefabHolder.Instance.Quest) as GameObject;
             Quest.transform.SetParent(areaQuest);
             Quest.GetComponent<Quest>().SetQuest(QuestList[i]);
+        }
+    }
+    public void Delete()
+    {
+        //Debug.Log(GetComponentsInChildren<Quest>().Length);
+        //GetComponentsInChildren<Quest>();
+        foreach (Quest tr in GetComponentsInChildren<Quest>())
+        {
+            //Debug.Log(tr);
+            Destroy(tr.gameObject);
         }
     }
 }
