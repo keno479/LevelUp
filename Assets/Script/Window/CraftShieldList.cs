@@ -23,8 +23,7 @@ public class CraftShieldList : MonoBehaviour
             if (!GameDirector.Instance.CraftRecipe[i] && DataList[i].Recipe_Have)
             {
                 GameObject CraftShield =
-                    Instantiate(PrefabHolder.Instance.CraftShield) as GameObject;
-                CraftShield.transform.SetParent(areaCraftShield);
+                    Instantiate(PrefabHolder.Instance.CraftShield,areaCraftShield) as GameObject;
                 CraftShield.GetComponent<ShieldRecipe>().CraftRecipe(param);
                 GameDirector.Instance.CraftRecipe[i] = true;
             }

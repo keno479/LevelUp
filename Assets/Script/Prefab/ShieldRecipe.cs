@@ -43,8 +43,7 @@ public class ShieldRecipe : MonoBehaviour
         {
             if (Craft_Item_Cost[i] > 0)
             {
-                GameObject CraftItem = Instantiate(PrefabHolder.Instance.CraftItem) as GameObject;
-                CraftItem.transform.SetParent(areaItemCost);
+                GameObject CraftItem = Instantiate(PrefabHolder.Instance.CraftItem,areaItemCost) as GameObject;
                 CraftItem.GetComponent<CraftItemCost>().
                     ShowItemCost(Craft_Item_IDs[i], Craft_Item_Cost[i]);
             }
