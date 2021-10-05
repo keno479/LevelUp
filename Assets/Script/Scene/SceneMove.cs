@@ -18,4 +18,9 @@ public class SceneMove : MonoBehaviour
     {
         SceneManager.LoadScene(SceneName);
     }
+
+    public void Warp(string _scenename)
+    {
+        SceneManager.LoadScene(_scenename);
+    }
 }

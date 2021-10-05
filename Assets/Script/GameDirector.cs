@@ -138,8 +138,7 @@ public class GameDirector : Singleton<GameDirector>
         if (masteritem != null)
         {
             DataManager.Instance.dataItem.Add(masteritem.Item_ID);
-            GameObject drop = Instantiate(PrefabHolder.Instance.ShowDrop) as GameObject;
-            drop.transform.SetParent(areaDrop.transform);
+            GameObject drop = Instantiate(PrefabHolder.Instance.ShowDrop,areaDrop.transform) as GameObject;
             drop.GetComponent<ShowDrop>().ImageDrop.sprite = 
                 SpriteManager.Instance.Get(masteritem.Sprite_Name);
             drop.GetComponent<ShowDrop>().TextValue.text = "×1";
@@ -151,8 +150,7 @@ public class GameDirector : Singleton<GameDirector>
     public void DropGold(MasterEnemyParam masterenemy)
     {
         GameDirector.Instance.AddGold(masterenemy.Base_Gold);
-        GameObject drop = Instantiate(PrefabHolder.Instance.ShowDrop) as GameObject;
-        drop.transform.SetParent(areaDrop.transform);
+        GameObject drop = Instantiate(PrefabHolder.Instance.ShowDrop,areaDrop.transform) as GameObject;
         drop.GetComponent<ShowDrop>().ImageDrop.sprite = GoldIcon.sprite;
         drop.GetComponent<ShowDrop>().TextValue.text = $"×{masterenemy.Base_Gold}";
     }

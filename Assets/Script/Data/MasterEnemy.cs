@@ -16,6 +16,7 @@ public class MasterEnemyParam : CsvDataParam
     public int Drop_Item_ID3;
     public int LV_max;
     public int LV_min;
+    public bool Boss;
 
     public MasterEnemyParam Build(int level)
     {
@@ -36,6 +37,7 @@ public class MasterEnemyParam : CsvDataParam
         ret.Drop_Item_ID3 = Drop_Item_ID3;
         ret.LV_max = LV_max;
         ret.LV_min = LV_min;
+        ret.Boss = Boss;
         return ret;
     }
 

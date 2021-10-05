@@ -15,8 +15,7 @@ public class WindowQuestList : MonoBehaviour
         Delete();
         for (int i = 0; i < QuestList.Count; i++)
         {
-            GameObject Quest = Instantiate(PrefabHolder.Instance.Quest) as GameObject;
-            Quest.transform.SetParent(areaQuest);
+            GameObject Quest = Instantiate(PrefabHolder.Instance.Quest,areaQuest.transform) as GameObject;
             Quest.GetComponent<Quest>().SetQuest(QuestList[i]);
         }
     }

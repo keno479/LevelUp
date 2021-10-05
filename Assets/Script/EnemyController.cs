@@ -20,6 +20,7 @@ public class EnemyController : StateMachineBase<EnemyController>
     private int attack;
     public MasterEnemyParam usemasterparam;
     public AudioSource Audios;
+    private bool Boss;
 
     private void Start()
     {
@@ -51,6 +52,7 @@ public class EnemyController : StateMachineBase<EnemyController>
         IdlePos = transform.position;
         attack = usemasterparam.Attack;
         Audios = GetComponent<AudioSource>();
+        Boss = usemasterparam.Boss;
     }
 
     public bool IsFind()
@@ -107,6 +109,7 @@ public class EnemyController : StateMachineBase<EnemyController>
             base.OnUpdateState();
             if (machine.IsFind())
             {
+                machine.Audios.PlayOneShot(AudioManager.Instance.SE_Enemy[1]);
                 machine.SetState(new EnemyController.LookTarget(machine));
             }
         }
@@ -120,8 +123,9 @@ public class EnemyController : StateMachineBase<EnemyController>
         public override void OnEnterState()
         {
             base.OnEnterState();
-            //Debug.Log("look");
-            machine.Audios.PlayOneShot(AudioManager.Instance.SE_Enemy[1]);
+            //Debug.Log(machine.Audios);
+            //Debug.Log(AudioManager.Instance.SE_Enemy);
+            //Debug.Log(AudioManager.Instance.SE_Enemy.Length);
         }
         
         
@@ -214,17 +218,23 @@ public class EnemyController : StateMachineBase<EnemyController>
         {
             base.OnUpdateState();
 
-            if (machine.transform.position.y > -10 && RespawnTime >= 1)
+            RespawnTime += Time.deltaTime;
+            if (RespawnTime >= 1)
             {
                 machine.transform.Translate(0, DiveSpeed/100, 0);
             }
 
-            RespawnTime += Time.deltaTime;
-            if (RespawnTime >= 10 && RespawnTime < 11)
+            if (RespawnTime >= 20 && RespawnTime < 21)
             {
                 machine.Anim.SetTrigger("RespawnTrigger");
             }
-            else if (RespawnTime >= 11)
+            else if (RespawnTime >= 21 && !machine.Boss)
+            {
+                machine.gameObject.transform.position = machine.IdlePos;
+                machine.SetUp();
+                machine.SetState(new EnemyController.Idol(machine));
+            }
+            else if (RespawnTime >= 60 && machine.Boss)
             {
                 machine.gameObject.transform.position = machine.IdlePos;
                 machine.SetUp();
