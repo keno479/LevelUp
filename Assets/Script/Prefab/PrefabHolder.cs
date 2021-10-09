@@ -10,4 +10,5 @@ public class PrefabHolder : Singleton<PrefabHolder>
     public GameObject CraftShield;
     public GameObject CraftItem;
     public GameObject Quest;
+    public GameObject BtnWarp;
 }

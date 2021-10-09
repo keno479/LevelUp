@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using anogamelib;
+using TMPro;
 
 public class DataManager : Singleton<DataManager>
 {
@@ -10,19 +11,23 @@ public class DataManager : Singleton<DataManager>
     public TextAsset MasterShieldSource;
     public TextAsset MasterItemSource;
     public TextAsset MasterQuestSource;
+    public TextAsset MasterStageSource;
     public MasterWeapon masterweapon = new MasterWeapon();
     public MasterShield mastershield = new MasterShield();
     public MasterItem masteritem = new MasterItem();
     public MasterEnemy masterenemy = new MasterEnemy();
     public MasterQuest masterquest = new MasterQuest();
+    public MasterStage masterstage = new MasterStage();
     public DataWeapon dataWeapon = new DataWeapon();
     public DataItem dataItem = new DataItem();
     public DataUnit dataunit = new DataUnit();
     public DataShild datashield = new DataShild();
     public DataEnemy dataenemy = new DataEnemy();
     public DataQuest dataquest = new DataQuest();
+    public DataStage datastage = new DataStage();
     public DataUnitParam UnitPlayer;
     public KVS GameInfo = new KVS();
+    public TextMeshProUGUI PlayerName;
 
     public override void Initialize()
     {
@@ -115,6 +120,26 @@ public class DataManager : Singleton<DataManager>
             dataquest.Save();
         }
 
+        masterstage.Load(MasterStageSource);
+        datastage.SetSaveFilename("Data_Stage");
+        if (dataquest.Load() == false)
+        {
+            foreach(MasterStageParam q in masterstage.list)
+            {
+                DataStageParam data = new DataStageParam
+                {
+                    Stage_ID = q.Stage_ID,
+                    is_Clear = false
+                };
+                datastage.list.Add(data);
+            }
+            datastage.Save();
+        }
+
+        if (GameInfo.HasKey("PlayerName"))
+        {
+            PlayerName.text = $"{GameInfo.GetValue("PlayerName")}";
+        }
 
         GameDirector.Instance.Init();
     }

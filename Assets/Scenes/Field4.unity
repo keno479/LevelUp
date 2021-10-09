@@ -1338,9 +1338,7 @@ PrefabInstance:
       propertyPath: Anim
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 9120400802225333026, guid: 80e35fdccd09b444c8b63b0de9b49319, type: 3}
-    - {fileID: 9120400802225333025, guid: 80e35fdccd09b444c8b63b0de9b49319, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80e35fdccd09b444c8b63b0de9b49319, type: 3}
 --- !u!1001 &9066627534593097805
 PrefabInstance:
@@ -1414,8 +1412,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Raptor_Animated_FBX_5K_Sandmale
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1332629445154401769, guid: 9871185c06526fd4c86f6eff73929507, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9871185c06526fd4c86f6eff73929507, type: 3}
 --- !u!1001 &9131287376416595861
 PrefabInstance:
@@ -1489,6 +1486,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Raptor_Animated_FBX_5K_Orange
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4741329888042783234, guid: bc14d54210f44ac45b8e581657d67c95, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc14d54210f44ac45b8e581657d67c95, type: 3}

@@ -38,9 +38,24 @@ public class Quest : MonoBehaviour
 
         if (_param.Target_ID == 100)
         {
-            for (int i = 0; i < EnemyList.Count; i++)
+            if (_param.Target_Type == "Monster")
             {
-                Achievement_Rate += EnemyList[i].Kill_Count;
+                for (int i = 0; i < EnemyList.Count; i++)
+                {
+                    Achievement_Rate += EnemyList[i].Kill_Count;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < EnemyList.Count; i++)
+                {
+                    MasterEnemyParam enemy = 
+                        DataManager.Instance.masterenemy.list.Find(p => p.Enemy_ID == EnemyList[i].Enemy_ID);
+                    if (_param.Target_Type == enemy.Enemy_Type)
+                    {
+                        Achievement_Rate += EnemyList[i].Kill_Count;
+                    }
+                }
             }
         }
         else if (param != null) 

@@ -1,0 +1,6 @@
+﻿Stage_ID,Stage_Name,Boss_Pop_LV,Boss_Enemy_ID,Open_Stage_ID
+1,自宅,0,0,0
+2,森,10,101,3
+3,岩場,30,102,4
+4,川,50,103,5
+5,雪山,70,104,0
