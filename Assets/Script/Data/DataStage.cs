@@ -6,7 +6,7 @@ using anogamelib;
 public class DataStageParam : CsvDataParam
 {
     public int Stage_ID;
-    public bool is_Clear;
+    public bool is_Open;
 }
 
 public class DataStage : CsvData<DataStageParam>

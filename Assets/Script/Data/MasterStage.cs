@@ -9,7 +9,8 @@ public class MasterStageParam:CsvDataParam
     public string Stage_Name;
     public int Boss_Pop_LV;
     public int Boss_Enemy_ID;
-    public int Open_Stage_ID;
+    public int Key_Boss_ID;
+    public string Scene_Name;
 }
 
 public class MasterStage : CsvData<MasterStageParam>

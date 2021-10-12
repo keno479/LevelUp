@@ -10,7 +10,13 @@ public class WindowWarp : MonoBehaviour
 
     private void OnEnable()
     {
-        StageList=DataManager.Instance.masterstage
-        GameObject Warp = Instantiate(PrefabHolder.Instance.BtnWarp, areaButton) as GameObject;
+        StageList = DataManager.Instance.masterstage.list;
+
+        foreach(MasterStageParam q in StageList)
+        {
+            GameObject Warp = Instantiate(PrefabHolder.Instance.BtnWarp, areaButton) as GameObject;
+            Warp.GetComponent<BtnWarp>().SetWarpTarget(q);
+            Debug.Log(StageList.IndexOf(q));
+        }
     }
 }

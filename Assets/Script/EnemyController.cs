@@ -20,7 +20,7 @@ public class EnemyController : StateMachineBase<EnemyController>
     private int attack;
     public MasterEnemyParam usemasterparam;
     public AudioSource Audios;
-    private bool Boss;
+    public bool Boss;
 
     private void Start()
     {

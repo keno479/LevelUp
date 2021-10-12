@@ -122,19 +122,20 @@ public class DataManager : Singleton<DataManager>
 
         masterstage.Load(MasterStageSource);
         datastage.SetSaveFilename("Data_Stage");
-        if (dataquest.Load() == false)
+        if (datastage.Load() == false)
         {
             foreach(MasterStageParam q in masterstage.list)
             {
                 DataStageParam data = new DataStageParam
                 {
                     Stage_ID = q.Stage_ID,
-                    is_Clear = false
+                    is_Open = false
                 };
                 datastage.list.Add(data);
+                data.is_Open = q.Key_Boss_ID == 0;
             }
-            datastage.Save();
         }
+        datastage.Save();
 
         if (GameInfo.HasKey("PlayerName"))
         {

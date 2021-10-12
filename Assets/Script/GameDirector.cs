@@ -154,4 +154,15 @@ public class GameDirector : Singleton<GameDirector>
         drop.GetComponent<ShowDrop>().ImageDrop.sprite = GoldIcon.sprite;
         drop.GetComponent<ShowDrop>().TextValue.text = $"×{masterenemy.Base_Gold}";
     }
+
+    public void OpenStage(int _enemy_id)
+    {
+        MasterStageParam stagemaster =
+            DataManager.Instance.masterstage.list.Find(p => p.Key_Boss_ID == _enemy_id);
+        DataStageParam stagedata =
+            DataManager.Instance.datastage.list.Find(p => p.Stage_ID == stagemaster.Stage_ID);
+
+        stagedata.is_Open = true;
+        DataManager.Instance.datastage.Save();
+    }
 }

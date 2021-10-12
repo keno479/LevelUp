@@ -222,6 +222,10 @@ public class UnitController : StateMachineBase<UnitController>
                     GameDirector.Instance.EscOn();
                     machine.CanWalk = true;
                     GameDirector.Instance.GetEXP(enemy.usemasterparam.Base_EXP);
+                    if (enemy.Boss)
+                    {
+                        GameDirector.Instance.OpenStage(enemy.Enemy_ID);
+                    }
                     machine.SetState(new UnitController.Search(machine));
                     //Debug.Log(param.Base_Gold);
                 };

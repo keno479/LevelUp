@@ -429,6 +429,7 @@ MonoBehaviour:
   Anim: {fileID: 0}
   Hp_max: 0
   Audios: {fileID: 0}
+  Boss: 0
 --- !u!1 &656937142
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +706,7 @@ MonoBehaviour:
   Anim: {fileID: 0}
   Hp_max: 0
   Audios: {fileID: 0}
+  Boss: 0
 --- !u!1 &780687575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,6 +1100,7 @@ MonoBehaviour:
   Anim: {fileID: 0}
   Hp_max: 0
   Audios: {fileID: 0}
+  Boss: 0
 --- !u!4 &2086591558 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4673369876368086, guid: b19b0b49813c81e4083f235dc94d577f,
