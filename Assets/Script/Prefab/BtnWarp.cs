@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BtnWarp : MonoBehaviour
 {
     public TextMeshProUGUI StageName;
     private string SceneName;
+    public Button btnWarp;
 
     public void SetWarpTarget(MasterStageParam _param)
     {
@@ -20,6 +22,7 @@ public class BtnWarp : MonoBehaviour
         else
         {
             StageName.text = "???";
+            btnWarp.interactable = false;
         }
         SceneName = _param.Scene_Name;
     }
