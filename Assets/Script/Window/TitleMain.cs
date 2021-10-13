@@ -9,7 +9,7 @@ public class TitleMain : Singleton<TitleMain>
     public void OnClick()
     {
         Debug.Log("click");
-        if (TitleData.Instance.GameInfo.HasKey("Player_Name"))
+        if (TitleData.Instance.GameInfo.HasKey("PlayerName"))
         {
             SceneManager.LoadScene("Home");
         }
