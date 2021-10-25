@@ -5,11 +5,14 @@ using UnityEngine.InputSystem;
 using anogamelib;
 using UnityEngine.Events;
 using TMPro;
+using Cinemachine;
 
 public class UnitController : StateMachineBase<UnitController>
 {
     public InputAction InputMove;
     public Vector2 Movevalue;
+    public InputAction InputCameraRotate;
+    public float CameraRotateValue;
     private Rigidbody rb;
     public float moveSpeed = 3.0f;
     private Animator Anim;
@@ -21,7 +24,9 @@ public class UnitController : StateMachineBase<UnitController>
     public Transform CanvasDamage;
     public Camera cam;
     public AudioSource audios;
+    public CinemachineFreeLook FreeLook;
 
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -47,18 +52,21 @@ public class UnitController : StateMachineBase<UnitController>
     {
         //Debug.Log("Enable");
         InputMove.Enable();
+        InputCameraRotate.Enable();
     }
 
     private void OnDisable()
     {
         //Debug.Log("Disable");
         InputMove.Disable();
+        InputCameraRotate.Enable();
     }
     protected override void OnUpdatePrev()
     {
         base.OnUpdatePrev();
         Movevalue = InputMove.ReadValue<Vector2>();
 
+        CameraRotateValue = InputCameraRotate.ReadValue<float>();
         /*if (Input.GetMouseButtonDown(0))
         {
             Anim.SetTrigger("AttackTrigger");
@@ -108,6 +116,8 @@ public class UnitController : StateMachineBase<UnitController>
         {
             Anim.SetBool("isWalk", false);
         }
+
+        FreeLook.m_XAxis.m_InputAxisValue = CameraRotateValue * 0.2f;
     }
 
     private class Idle : StateBase<UnitController>

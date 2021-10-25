@@ -53,6 +53,7 @@ public class EnemyController : StateMachineBase<EnemyController>
         attack = usemasterparam.Attack;
         Audios = GetComponent<AudioSource>();
         Boss = usemasterparam.Boss;
+        Anim.GetBehaviour<OnAnimEnemyDied>().Callback = OnDied;
     }
 
     public bool IsFind()
@@ -75,7 +76,12 @@ public class EnemyController : StateMachineBase<EnemyController>
 
     public void Freeze()
     {
-        //Debug.Log("freeze");
+        Debug.Log("freeze");
+        FreezeHandler.Invoke();
+    }
+    
+    private void OnDied()
+    {
         FreezeHandler.Invoke();
     }
 
