@@ -9,13 +9,18 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: IL3DN_LakeFog
   m_Shader: {fileID: 4800000, guid: 4d57918823418d14c87a763ea3b93dfe, type: 3}
-  m_ShaderKeywords: _ALPHABLEND_ON _FADING_ON _KEYWORD0_ON
+  m_ShaderKeywords: _ADD_PRECOMPUTED_VELOCITY _ALPHABLEND_ON _BLENDMODE_ALPHA _DISABLE_SSR
+    _ENABLE_FOG_ON_TRANSPARENT _FADING_ON _KEYWORD0_ON _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
+  m_CustomRenderQueue: 3400
+  stringTagMap:
+    MotionVector: User
+    RenderType: Transparent
+  disabledShaderPasses:
+  - DistortionVectors
+  - TransparentBackface
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -88,6 +93,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _AddPrecomputedVelocity: 1
+    - _AlphaCutoff: 0.5
+    - _AlphaCutoffEnable: 0
+    - _AlphaDstBlend: 10
+    - _AlphaSrcBlend: 0
+    - _BlendMode: 0
     - _BlendOp: 0
     - _BumpScale: 1
     - _CameraFadingEnabled: 0
@@ -95,15 +106,22 @@ Material:
     - _CameraNearFadeDistance: 1
     - _ColorMode: 0
     - _Cull: 2
+    - _CullMode: 2
+    - _CullModeForward: 2
     - _Cutoff: 0.5
     - _Density: 15
     - _DetailNormalMapScale: 1
     - _DistortionBlend: 0.5
+    - _DistortionEnable: 0
     - _DistortionEnabled: 0
+    - _DistortionOnly: 0
     - _DistortionStrength: 1
     - _DistortionStrengthScaled: 0
+    - _DoubleSidedEnable: 0
+    - _DoubleSidedNormalMode: 2
     - _DstBlend: 10
     - _EmissionEnabled: 0
+    - _EnableFogOnTransparent: 1
     - _ExcludeSkybox: 0
     - _FlipbookMode: 0
     - _FogAmount: 15
@@ -118,6 +136,9 @@ Material:
     - _Mode: 2
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _ReceivesSSR: 0
+    - _RenderQueueType: 5
+    - _RequireSplitLighting: 0
     - _SF_Blend: 0
     - _SmoothnessTextureChannel: 0
     - _SoftParticleFactor: 5
@@ -125,9 +146,28 @@ Material:
     - _SoftParticlesFarFadeDistance: 5
     - _SoftParticlesNearFadeDistance: 0
     - _SpecularHighlights: 1
-    - _SrcBlend: 5
+    - _SrcBlend: 1
+    - _StencilRef: 0
+    - _StencilRefDepth: 0
+    - _StencilRefDistortionVec: 4
+    - _StencilRefGBuffer: 2
+    - _StencilRefMV: 32
+    - _StencilWriteMask: 6
+    - _StencilWriteMaskDepth: 8
+    - _StencilWriteMaskDistortionVec: 4
+    - _StencilWriteMaskGBuffer: 14
+    - _StencilWriteMaskMV: 40
+    - _SurfaceType: 1
+    - _TransparentBackfaceEnable: 0
+    - _TransparentCullMode: 2
+    - _TransparentSortPriority: 0
+    - _TransparentZWrite: 1
     - _UVSec: 0
-    - _ZWrite: 0
+    - _UseShadowThreshold: 0
+    - _ZTestDepthEqualForOpaque: 4
+    - _ZTestGBuffer: 4
+    - _ZTestTransparent: 4
+    - _ZWrite: 1
     - __dirty: 0
     m_Colors:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
@@ -136,6 +176,7 @@ Material:
     - _Color: {r: 0.30250978, g: 0.57238066, b: 0.74509805, a: 0.85490197}
     - _Color0: {r: 0.015686274, g: 1, b: 0, a: 0}
     - _ColorAddSubDiff: {r: 1, g: 0, b: 0, a: 0}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _EndColor: {r: 0, g: 1, b: 0, a: 0}
     - _FarColor: {r: 0.21226397, g: 0.5812036, b: 1, a: 0.4}
@@ -146,3 +187,4 @@ Material:
     - _SoftParticleFadeParams: {r: 0, g: 0.2, b: 0, a: 0}
     - _StartColor: {r: 1, g: 0, b: 0, a: 0}
     - _TintColor: {r: 0.36133856, g: 0.4222591, b: 0.5283019, a: 0.5}
+  m_BuildTextureStacks: []
